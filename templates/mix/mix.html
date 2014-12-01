@@ -1,0 +1,63 @@
+<input type="range" id="crossfader" value="50" max="100" oninput="change_crossfade()" style="position: absolute; right: 41.5%; z-index: 2;"/>
+<div id="wrapper">
+    <div class="col-md-6" ng-drop="true" ng-drop-success="onDropComplete(1,$data,$event)">
+        <img class="imgsound1" src="{{imgsound1}}">
+		<img class="imgsound1" src="./images/center.png" id="center1"/>
+        <img src="./images/favicon.png" class="imgsound_base" id="base1">
+        <img draggable="false" src="./images/disc.png" ng-mousedown="startscratch(1)" ng-mouseup="stopscratch(1)" ng-mouseout="stopscratch(1)" class="disc" id="disc1"/>
+		<!--Coucou Yann, coucou Seb :) Les espaces qui suivent sont pas là pour faire moche, ils ont une utilitée. En bref, notre disque c'est une image carrée, et il arrive qu'elle passe par dessus les bouttons.
+			Du coup, ont peu appuyer par exemple sur le boutton pause ET sur le disque sans le vouloir...Ce qui fait qu'on fait pause et que l'on scratche en même temps, ce qui crée des emmerdes.
+			Donc quoi que vous fassiez, laissez toujours un espace entre le disque et les boutons :)-->
+        <!--<p class="titlesound">{{titlesound1}}</p>-->
+        <br>
+        <canvas class="visualizer1"></canvas>
+        <p class="modifs_sound">Frequence&nbsp&nbsp</p><input type="range" id="frequence1" value="100" max="100" oninput="change_frequence(1)" style="float: left;"/>
+        <p class="modifs_sound">&nbsp&nbsp&nbsp&nbspQuality&nbsp&nbsp</p><input type="range" id="Qlevel1" value="0" max="100" oninput="change_quality(1)" style="float: left;"/>
+        <div class="audio gradient" id="audio1">
+            <div class="player gradient">
+                <a class="button gradient pause" ng-class="statusclasssound1" ng-click="playsound(1)"></a>
+                <input type="range" id="vol1" value="100" max="100" oninput="change_volume(1)"/>
+                <a class="button gradient mute" onclick="show_vol(1)"></a>
+                <input type="range" id="seek1" ng-mousedown="stopseek(1)" ng-mouseup="moveto(1)" value="0" max=""/>
+                <a class="button gradient" id="close1" ng-click="stopsound(1)"></a>
+            </div>
+        </div>
+        <div ng-show="showinfosong1">
+            <br>
+            <p><i class="fa fa-sliders"></i> <span class="titlesound">{{titlesound1}}</span></p>
+            <span><a target="_blank" href="{{urlsound1}}"><i class="fa fa-external-link"></i></a> <input  ng-model="urlsound1" width="100%"></span>
+            <div  tweet="urlsound1"></div>
+            <div  fb-like="urlsound1"></div>
+            <p><i class="fa fa-navicon"></i> <span ng-bind-html="descriptionsound1 | linky:'_blank'"></span></p>
+        </div>
+    </div>
+    <div class="col-md-6" ng-drop="true" ng-drop-success="onDropComplete(2,$data,$event)">
+        <img class="imgsound2" src="{{imgsound2}}">
+		<img class="imgsound2" src="./images/center.png" id="center2"/>
+        <img src="./images/favicon.png" class="imgsound_base" id="base2">
+        <img draggable="false" src="./images/disc.png" ng-mousedown="startscratch(2)" ng-mouseup="stopscratch(2)" ng-mouseout="stopscratch(2)" class="disc" id="disc2"/>
+		<!--idem-->
+		<br>
+        <!--<p class="titlesound">{{titlesound2}}</p>-->
+        <canvas class="visualizer2"></canvas>
+        <p class="modifs_sound">Frequence&nbsp&nbsp</p><input type="range" id="frequence2" value="100" max="100" oninput="change_frequence(2)" style="float: left;"/>
+        <p class="modifs_sound">&nbsp&nbsp&nbsp&nbspQuality&nbsp&nbsp</p><input type="range" id="Qlevel2" value="0" max="100" oninput="change_quality(2)" style="float: left;"/>
+         <div class="audio gradient" id="audio2">
+            <div class="player gradient">
+                <a class="button gradient pause" ng-class="statusclasssound2" ng-click="playsound(2)"></a>
+                <input type="range" id="vol2" value="100" max="100" oninput="change_volume(2)"/>
+                <a class="button gradient mute" onclick="show_vol(2)"></a>
+                <input type="range" id="seek2" ng-mousedown="stopseek(2)" ng-mouseup="moveto(2)" value="0" max=""/>
+                <a class="button gradient" id="close2" ng-click="stopsound(2)"></a>
+            </div>
+        </div>
+        <div ng-show="showinfosong2">
+            <br>
+            <p><i class="fa fa-sliders"></i> <span class="titlesound">{{titlesound2}}</span></p>
+            <span><a target="_blank" href="{{urlsound2}}"><i class="fa fa-external-link"></i></a> <input  ng-model="urlsound2" width="100%"></span>
+            <div tweet="urlsound2 "></div>
+            <div fb-like="urlsound2"></div>
+            <p><i class="fa fa-navicon"></i> <span ng-bind-html="descriptionsound2 | linky:'_blank'"></span></p>
+        </div>
+    </div>
+</div>

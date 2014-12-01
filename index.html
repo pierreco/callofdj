@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Call of DJ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="mixCtrl as sc" id="scMain">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a  href="#/mix" class="navbar-brand">Call of DJ</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/team">Equipe</a>
+                </li>
+                <li>
+                    <a href="#/help">Aide</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a  data-toggle="dropdown" class="dropdown-toggle">Catégories<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="explorecat('metal')" >#Metal</a></li>
+                        <li><a ng-click="explorecat('electro')">#Electro</a></li>
+                        <li><a ng-click="explorecat('jazz')">#Jazz</a></li>
+                        <li><a ng-click="explorecat('latin')">#Latin</a></li>
+                        <li><a ng-click="explorecat('pop')">#Pop</a></li>
+                        <li><a ng-click="explorecat('soul')">#Soul</a></li>
+                        <li><a ng-click="explorecat('hip hop')">#HipHop</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <form class="navbar-form navbar-right" role="search" name="scAdd" ng-submit="sc.search()" >
+                        <div class="input-group" style="right: 3px;">
+                            <input type="text" class="form-control" ng-model="sc.ui" placeholder="Rechercher une musique" name="q">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-md-9">
+            <div ng-view></div>
+        </div>
+        <div class="col-md-3">
+            <p ng-show="sc.loading">Chargement</p>
+            <p class="textsearch">{{ textsearch }}<br>{{ nbresult }}</p>
+            <div class="block-table-scoll">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr ng-drag="true" ng-drag-data="sound"  ng-repeat="sound in sc.list | filter:{ streamable: true }" ng-if="sound.embeddable_by == 'all'">
+                        <td><img ng-src="{{sound.artwork_url}}" width="40px"></td>
+                        <td>{{ sound.title }} <span class="span-duration">{{ sound.duration | date: 'mm:ss' }}</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Script HTML to Mix -->
+<script src="librairy/angular.min.js"></script>
+<script src="librairy/angular-route.js"></script>
+<script src="librairy/jQueryRotateCompressed.js"></script>
+<script src="librairy/ngdraggable.js"></script>
+<script src="librairy/angulike.js"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="//code.angularjs.org/1.3.4/angular-sanitize.js"></script>
+<script src="//w.soundcloud.com/player/api.js"></script>
+<script src="app/rooter/rooter.js"></script>
+<script src="app/services/SoundcloudService.js"></script>
+<script src="templates/mix/mixCtrl.js"></script>
+<script src="templates/team/teamCtrl.js"></script>
+<script src="templates/help/helpCtrl.js"></script>
+<script src="app/songmanager/script.js"></script>
+</body>
+</html>
