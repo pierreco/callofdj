@@ -2,7 +2,7 @@
 
 Call of DJ est une table de mixage online composé de 2 tournes-disques dans lequel des morceaux de musique sont chargés par drag & drop depuis la liste de résultats d'une recherche.
 
-<img src="http://gouezou-yannvai.fr/images/bg_call_of_dj.png" width="100%">
+<img src="http://callofdj.gouezou-yannvai.fr/images/bg_call_of_dj.png" width="100%">
 
  <ul>          <li>HTML5</li>
                 <li>CSS - Framework <a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
